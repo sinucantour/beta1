@@ -605,3 +605,28 @@ footer hr {
 footer iframe {
   border-radius: 10px;
 }
+
+/* Banner responsive */
+.banner {
+  width: 100%;
+  height: auto; /* Se adapta automáticamente en móvil */
+  max-height: 100vh; /* Nunca será más alto que la pantalla */
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Cubre toda la sección sin deformarse */
+}
+
+/* Ajuste especial para móviles */
+@media (max-width: 768px) {
+  .banner {
+    height: 50vh; /* La mitad de la pantalla en móviles */
+  }
+  .banner img {
+    object-position: center; /* Centra la parte visible */
+  }
+}
+
