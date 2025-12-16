@@ -1,4 +1,4 @@
-// ===== Inicializar Swiper Banner =====
+// ===== Inicializar Swiper Banner Principal =====
 const swiper = new Swiper('.mySwiper', {
   loop: true,
   navigation: {
@@ -10,34 +10,29 @@ const swiper = new Swiper('.mySwiper', {
     clickable: true,
   },
   autoplay: {
-    delay: 3000,
+    delay: 4000,
     disableOnInteraction: false,
   },
+  effect: 'slide',
+  speed: 600,
+  grabCursor: true,
 });
 
-// ===== Inicializar Swiper Servicios =====
-const swiperServicios = new Swiper('.servicios-swiper', {
-  loop: true,
-  slidesPerView: 1,
-  spaceBetween: 20,
-  autoplay: { 
-    delay: 5000,
-    disableOnInteraction: false,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-});
-
-// ===== Inicializar AOS =====
+// ===== Inicializar AOS (Animaciones) =====
 AOS.init({
   duration: 1000,
-  once: true
+  once: true,
+  offset: 50
+});
+
+// ===== Cerrar menú móvil al hacer clic en enlaces =====
+document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+      new bootstrap.Collapse(navbarCollapse).hide();
+    }
+  });
 });
 
 // ===== Activar link del menú según scroll =====
@@ -61,35 +56,32 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ===== Redirigir a formulario con servicio seleccionado =====
-document.querySelectorAll('#servicios a.btn, #food .agregar-carrito').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    // Obtener nombre del servicio
-    let servicio = btn.dataset.servicio || '';
-    if(!servicio && btn.getAttribute('href')){
-      const urlParams = new URLSearchParams(btn.getAttribute('href').split('?')[1]);
-      servicio = urlParams ? urlParams.get('servicio') : '';
-    }
-
-    // Llenar input del formulario
-    const contactoForm = document.getElementById('contacto');
-    const inputMensaje = contactoForm?.querySelector('#mensaje');
-    if(inputMensaje && servicio){
-      inputMensaje.value = `Quiero información sobre: ${servicio}`;
-    }
-
+// ===== FAQ Toggle =====
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const item = button.parentElement;
     
+    // Cerrar otros FAQs abiertos
+    document.querySelectorAll('.faq-item').forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.classList.remove('active');
+      }
+    });
+    
+    // Toggle del FAQ actual
+    item.classList.toggle('active');
   });
 });
 
-// ===== Carrito Food =====
-// ===== Carrito Food =====
+// ===== CARRITO DE COMPRAS (FOOD) =====
 let carrito = [];
 
 function actualizarCarrito() {
   const lista = document.getElementById('lista-carrito');
+  const totalElement = document.getElementById('total');
+  
+  if (!lista || !totalElement) return;
+  
   lista.innerHTML = '';
   let total = 0;
 
@@ -98,12 +90,14 @@ function actualizarCarrito() {
     total += subtotal;
 
     const li = document.createElement('li');
-    li.innerHTML = `${item.nombre} x${item.cantidad} = ${subtotal} COP 
-                    <button onclick="eliminarProducto(${index})">X</button>`;
+    li.innerHTML = `
+      <span>${item.nombre} x${item.cantidad} = ${subtotal.toLocaleString()} COP</span>
+      <button onclick="eliminarProducto(${index})">X</button>
+    `;
     lista.appendChild(li);
   });
 
-  document.getElementById('total').textContent = total;
+  totalElement.textContent = total.toLocaleString();
 }
 
 function eliminarProducto(index) {
@@ -115,216 +109,131 @@ function eliminarProducto(index) {
 document.querySelectorAll('.agregar-carrito').forEach(btn => {
   btn.addEventListener('click', () => {
     const card = btn.closest('.card');
-    const nombre = card.querySelector('.card-title').textContent;
+    const nombre = card.querySelector('.card-title').textContent.trim();
     const precio = parseInt(card.querySelector('.precio').dataset.precio);
-    const cantidad = parseInt(card.querySelector('.cantidad').value);
+    const cantidadInput = card.querySelector('.cantidad');
+    const cantidad = parseInt(cantidadInput.value);
+
+    if (cantidad <= 0) {
+      alert('Por favor ingresa una cantidad válida');
+      return;
+    }
 
     const existente = carrito.find(p => p.nombre === nombre);
-    if(existente){
+    if (existente) {
       existente.cantidad += cantidad;
     } else {
-      carrito.push({nombre, precio, cantidad});
+      carrito.push({ nombre, precio, cantidad });
     }
 
     actualizarCarrito();
+    
+    // Feedback visual
+    btn.textContent = '¡Agregado!';
+    btn.style.background = '#4CAF50';
+    setTimeout(() => {
+      btn.textContent = 'Agregar';
+      btn.style.background = '';
+    }, 1000);
   });
 });
 
-// Finalizar pedido a WhatsApp
-document.getElementById('finalizar').addEventListener('click', () => {
-  if(carrito.length === 0) return alert("Agrega productos al carrito");
+// Finalizar pedido (WhatsApp)
+const finalizarBtn = document.getElementById('finalizar');
+if (finalizarBtn) {
+  finalizarBtn.addEventListener('click', () => {
+    if (carrito.length === 0) {
+      alert('El carrito está vacío. Agrega productos antes de continuar.');
+      return;
+    }
 
-  let mensaje = "Hola, quiero pedir:\n";
-  carrito.forEach(item => {
-    mensaje += `- ${item.nombre} x${item.cantidad}\n`;
+    let mensaje = '🐾 *Hola! Quiero hacer un pedido de SinucanTOUR* 🐾\n\n';
+    let total = 0;
+    
+    carrito.forEach(item => {
+      const subtotal = item.precio * item.cantidad;
+      total += subtotal;
+      mensaje += `• ${item.nombre} x${item.cantidad} = ${subtotal.toLocaleString()} COP\n`;
+    });
+    
+    mensaje += `\n*Total: ${total.toLocaleString()} COP*`;
+
+    const url = `https://wa.me/573235882174?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+    
+    // Opcional: limpiar carrito después de enviar
+    // carrito = [];
+    // actualizarCarrito();
   });
+}
 
-  const url = `https://wa.me/573235882174?text=${encodeURIComponent(mensaje)}`;
-  window.open(url, '_blank');
-});
-
-
-
-// Detecta clicks en los botones de los planes
+// ===== BOTONES DE PLANES -> FORMULARIO =====
 document.querySelectorAll('.btn-plan').forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
-    const servicio = btn.dataset.servicio;
-
-    // Asignar al input del formulario
-    const contactoForm = document.querySelector('#contacto');
-    const mensajeInput = contactoForm.querySelector('#mensaje');
-    if(mensajeInput){
-      mensajeInput.value = `Quiero información sobre: ${servicio}`;
-      contactoForm.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
-
-// Autocompletar plan o servicio en el formulario
-document.querySelectorAll('#servicios .plan-card button').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
     const servicio = btn.closest('.plan-card').dataset.servicio;
-    const contactoForm = document.getElementById('contacto');
-    const mensajeInput = contactoForm.querySelector('#mensaje');
 
-    if(mensajeInput && servicio){
-      mensajeInput.value = `Quiero información sobre: ${servicio}`;
+    // Rellenar el campo de mensaje del formulario
+    const contactoSection = document.getElementById('contacto');
+    const mensajeInput = document.querySelector('#mensaje');
+    
+    if (mensajeInput && servicio) {
+      mensajeInput.value = `Hola, estoy interesado en el ${servicio}. ¿Podrían darme más información?`;
     }
 
-    if(contactoForm){
-      contactoForm.scrollIntoView({ behavior: 'smooth' });
+    // Scroll suave al formulario
+    if (contactoSection) {
+      contactoSection.scrollIntoView({ behavior: 'smooth' });
     }
   });
 });
-// Inicializar AOS
-AOS.init({
-  duration: 1000,
-  once: true,
-  mirror: false,
-});
 
-// Autocompletar plan o servicio en el formulario
-document.querySelectorAll('#servicios .plan-card button').forEach(btn => {
-  btn.addEventListener('click', (e) => {
+// ===== AUTOPLAY DEL CARRUSEL DE MASCOTAS =====
+const carouselMascotas = document.getElementById('carouselMascotas');
+if (carouselMascotas) {
+  const mascotasCarousel = new bootstrap.Carousel(carouselMascotas, {
+    interval: 3000,
+    wrap: true,
+    keyboard: true,
+    pause: 'hover'
+  });
+}
+
+// ===== Scroll Suave para todos los enlaces internos =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    
+    // Ignorar enlaces vacíos o solo con #
+    if (href === '#' || href === '') return;
+    
     e.preventDefault();
-    const servicio = btn.closest('.plan-card').dataset.servicio;
-    const contactoForm = document.getElementById('contacto');
-    const mensajeInput = contactoForm.querySelector('#mensaje');
-
-    if(mensajeInput && servicio){
-      mensajeInput.value = `Quiero información sobre: ${servicio}`;
-    }
-
-    if(contactoForm){
-      contactoForm.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
-// Inicializar AOS
-AOS.init({
-  duration: 1000,
-  once: true,
-  mirror: false,
-});
-
-// Autocompletar plan o servicio en el formulario
-document.querySelectorAll('#servicios .plan-card button').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const servicio = btn.closest('.plan-card').dataset.servicio;
-    const contactoForm = document.getElementById('contacto');
-    const mensajeInput = contactoForm.querySelector('#mensaje');
-
-    if(mensajeInput && servicio){
-      mensajeInput.value = `Quiero información sobre: ${servicio}`;
-    }
-
-    if(contactoForm){
-      contactoForm.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
-// Inicializar AOS
-AOS.init({
-  duration: 1000,
-  once: true,
-  mirror: false,
-});
-
-// Autocompletar plan o servicio en el formulario
-document.querySelectorAll('#servicios .plan-card button').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const servicio = btn.closest('.plan-card').dataset.servicio;
-    const contactoForm = document.getElementById('contacto');
-    const mensajeInput = contactoForm.querySelector('#mensaje');
-
-    if(mensajeInput && servicio){
-      mensajeInput.value = `Quiero información sobre: ${servicio}`;
-    }
-
-    if(contactoForm){
-      contactoForm.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
-// Inicializar AOS
-AOS.init({
-  duration: 1000,
-  once: true,
-  mirror: false,
-});
-
-// Autocompletar plan o servicio en el formulario
-document.querySelectorAll('#servicios .plan-card button').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const servicio = btn.closest('.plan-card').dataset.servicio;
-    const contactoForm = document.getElementById('contacto');
-    const mensajeInput = contactoForm.querySelector('#mensaje');
-
-    if(mensajeInput && servicio){
-      mensajeInput.value = `Quiero información sobre: ${servicio}`;
-    }
-
-    if(contactoForm){
-      contactoForm.scrollIntoView({ behavior: 'smooth' });
+    const target = document.querySelector(href);
+    
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   });
 });
 
-// ===== FAQ toggle con flecha =====
-document.querySelectorAll('.faq-question').forEach(button => {
-  button.addEventListener('click', () => {
-    const item = button.parentElement;
-    item.classList.toggle('active');
-  });
+// ===== Efecto de carga =====
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+  console.log('✅ SinucanTOUR cargado correctamente');
 });
 
+// ===== Detectar dispositivo móvil =====
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+if (isMobile) {
+  console.log('📱 Modo móvil detectado');
+}
 
-
-// ===== Inicializar AOS para animaciones =====
-AOS.init({
-  duration: 1000,
-  once: true
-});
-
-// =========================
-//   Servicios - Botones
-// =========================
-document.querySelectorAll(".btn-plan").forEach(boton => {
-  boton.addEventListener("click", () => {
-    const servicio = boton.closest(".plan-card").dataset.servicio;
-
-    // 👉 Aquí decides cómo redirigir:
-    // Opción A: mandar a WhatsApp con el nombre del plan
-    const mensaje = `¡Hola! Estoy interesado en el servicio: ${servicio}. ¿Podrías darme más información?`;
-    const url = `https://wa.me/573235882174?text=${encodeURIComponent(mensaje)}`;
-
-    window.open(url, "_blank");
-
-    // Opción B (si usas formulario interno):
-    // document.querySelector("#servicio").value = servicio;
-    // document.querySelector("#contacto").scrollIntoView({ behavior: "smooth" });
-  });
-});
-
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-
-// Abrir/cerrar menú al tocar hamburguesa
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navMenu.classList.toggle('active');
-});
-
-// Cerrar menú al tocar cualquier enlace
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-  });
-});
-
+// ===== Performance: Lazy loading de imágenes (si el navegador no lo soporta nativamente) =====
+if ('loading' in HTMLImageElement.prototype) {
+  console.log('✅ Lazy loading nativo soportado');
+} else {
+  console.log('⚠️ Lazy loading no soportado, usa un polyfill si es necesario');
+}
