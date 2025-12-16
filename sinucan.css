@@ -1,12 +1,18 @@
-/* ===== Variables de colores ===== */
+/* ===== Variables de colores (PALETA ORIGINAL) ===== */
 :root {
-  --primary: #ff9800; /* Cambia por tu color principal */
+  --primary: #ff9800;
   --secondary: #333;
   --bg: #fff;
   --text: #000;
 }
 
-/* ===== Estilos generales ===== */
+/* ===== Reset y estilos generales ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -14,61 +20,194 @@ body {
   background-color: var(--bg);
   color: var(--text);
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* ===== Header / Navbar ===== */
 .navbar {
   padding: 15px 20px;
-  background-color: var(--bg);
+  background-color: var(--bg) !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
 }
 
 .navbar .navbar-brand {
-  color: var(--primary);
+  color: var(--primary) !important;
   font-weight: bold;
   font-size: 1.8rem;
 }
 
 .navbar .nav-link {
-  color: var(--text);
+  color: var(--text) !important;
   font-weight: 500;
   transition: 0.3s;
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
-  color: var(--primary);
+  color: var(--primary) !important;
 }
 
-/* ===== Swiper Banner ===== */
-.swiper {
+/* ===== SECCIÓN INICIO - BANNER RESPONSIVE CORREGIDO ===== */
+#inicio {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
   width: 100%;
-  height: 500px; /* Ajusta altura del banner */
-  margin-top: 70px; /* Para que no quede debajo del header */
+  overflow: hidden;
+}
+
+.swiper.mySwiper {
+  width: 100%;
+  height: 600px;
+  margin-top: 70px;
+  position: relative;
+}
+
+.swiper-wrapper {
+  height: 100%;
+}
+
+.swiper-slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #000;
 }
 
 .swiper-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  display: block;
 }
 
-/* ===== Sección Quiénes Somos ===== */
+/* Botones de navegación del swiper */
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--primary) !important;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 24px !important;
+}
+
+.swiper-pagination-bullet {
+  background: var(--primary) !important;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background: var(--primary) !important;
+}
+
+/* Responsive Swiper - CORREGIDO */
+@media screen and (max-width: 1200px) {
+  .swiper.mySwiper {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .swiper.mySwiper {
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .swiper.mySwiper {
+    height: 400px;
+    margin-top: 60px;
+  }
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 20px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .swiper.mySwiper {
+    height: 300px;
+    margin-top: 56px;
+  }
+  
+  .navbar .navbar-brand {
+    font-size: 1.4rem;
+  }
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 18px !important;
+  }
+  
+  .swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+    margin: 0 4px !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .swiper.mySwiper {
+    height: 250px;
+  }
+}
+
+/* ===== Sección Nosotros CON IMAGEN DE FONDO ===== */
 #nosotros {
   padding: 80px 20px;
-  background-color: #fff; /* fondo blanco */
+  background: url('img/168185-perro-gran_dans-pastor_aleman-pastor_australiano-pastor_belga_malinois-3840x2160.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+#nosotros::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.92);
+  z-index: 0;
 }
 
 #nosotros .container {
   max-width: 1200px;
   margin: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .nosotros-block {
   display: flex;
-  flex-wrap: wrap; /* ✅ Permite que se acomode en varias líneas */
+  flex-wrap: wrap;
   align-items: flex-start;
   margin-bottom: 40px;
+  gap: 20px;
 }
 
 .nosotros-block img {
@@ -76,13 +215,14 @@ body {
   height: 200px;
   object-fit: cover;
   border-radius: 10px;
-  margin-right: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .nosotros-text {
   flex: 1;
   text-align: justify;
-  min-width: 250px; /* ✅ Evita que se encoja demasiado en móvil */
+  min-width: 250px;
 }
 
 .nosotros-text h3 {
@@ -95,11 +235,21 @@ body {
   margin-right: 10px;
 }
 
-/* ✅ Responsive mejorado */
+.nosotros-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive Nosotros */
 @media screen and (max-width: 768px) {
+  #nosotros {
+    padding: 60px 15px;
+    background-attachment: scroll;
+  }
+
   .nosotros-block {
     flex-direction: column;
-    align-items: center; /* centra en móviles */
+    align-items: center;
     text-align: center;
   }
 
@@ -110,7 +260,7 @@ body {
   }
 
   .nosotros-text {
-    text-align: center; /* ✅ centra el texto en móviles */
+    text-align: center;
   }
 
   .nosotros-text h3 {
@@ -118,27 +268,132 @@ body {
   }
 
   .nosotros-text p {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }
 
-/* secion mascotas  Mantener imágenes cuadradas 1080x1080 */
-.img-square {
-  width: 100%;
-  aspect-ratio: 1/1;   /* mantiene proporción cuadrada */
-  object-fit: cover;   /* recorta sin deformar */
-  border-radius: 10px;
+@media screen and (max-width: 480px) {
+  .nosotros-text h3 {
+    font-size: 1.3rem;
+  }
+
+  .nosotros-text p {
+    font-size: 0.9rem;
+  }
 }
 
+/* ===== SECCIÓN MASCOTAS - SIN IMAGEN DE FONDO ===== */
+#mascotas {
+  padding: 60px 20px;
+  background-color: #f8f9fa;
+}
 
+#mascotas h2 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 30px;
+}
 
+.mascotas-carousel-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
 
+.img-carousel {
+  width: 100%;
+  height: 600px;
+  object-fit: contain;
+  border-radius: 15px;
+  background-color: #000;
+}
 
-/* =========================
-   SERVICIOS
-========================= */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px 20px;
+  border-radius: 10px;
+  bottom: 20px;
+}
+
+.carousel-caption h5 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 0;
+  font-weight: bold;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(255, 152, 0, 0.8);
+  border-radius: 50%;
+  padding: 20px;
+}
+
+.carousel-indicators-custom {
+  text-align: center;
+  padding: 15px;
+  background: rgba(255, 152, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.indicator-text {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Responsive Mascotas */
+@media screen and (max-width: 768px) {
+  #mascotas {
+    padding: 40px 15px;
+  }
+
+  #mascotas h2 {
+    font-size: 2rem;
+  }
+
+  .img-carousel {
+    height: 400px;
+  }
+
+  .carousel-caption h5 {
+    font-size: 1.2rem;
+  }
+
+  .indicator-text {
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #mascotas h2 {
+    font-size: 1.7rem;
+  }
+
+  .img-carousel {
+    height: 300px;
+  }
+
+  .carousel-caption h5 {
+    font-size: 1rem;
+  }
+
+  .carousel-caption {
+    padding: 8px 15px;
+    bottom: 10px;
+  }
+
+  .indicator-text {
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== SERVICIOS CON IMAGEN DE FONDO ===== */
 .servicios-bg {
-  background: url("img/168185-perro-gran_dans-pastor_aleman-pastor_australiano-pastor_belga_malinois-3840x2160.jpg") no-repeat center center/cover;
+  background: url("img/168185-perro-gran_dans-pastor_aleman-pastor_australiano-pastor_belga_malinois-3840x2160.jpg") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
   padding: 60px 20px;
   position: relative;
   z-index: 1;
@@ -148,25 +403,40 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55); /* oscurece para contraste */
+  background: rgba(0, 0, 0, 0.55);
   z-index: -1;
 }
 
-.servicios-bg h2,
+.servicios-bg h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
 .servicios-bg h3 {
+  font-size: 2rem;
   text-align: center;
   margin-bottom: 25px;
   color: #fff;
+}
+
+.planes-paseos,
+.planes-banos,
+.planes-guarderia {
+  margin-bottom: 50px;
 }
 
 .planes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .plan-card {
-  background-color: rgba(0, 0, 0, 0.6); /* oscuro semi-transparente, como Servicios */
+  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 15px;
   padding: 25px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
@@ -184,7 +454,7 @@ body {
   font-size: 1.5rem;
   margin-bottom: 10px;
   text-align: center;
-  color: #ffd700; /* amarillo dorado */
+  color: #ffd700;
 }
 
 .plan-card p {
@@ -230,12 +500,64 @@ body {
   transform: scale(1.05);
 }
 
-/* ===== Sección Food ===== */
+/* Responsive Servicios */
+@media screen and (max-width: 768px) {
+  .servicios-bg {
+    padding: 40px 15px;
+    background-attachment: scroll;
+  }
 
+  .servicios-bg h2 {
+    font-size: 2rem;
+  }
+
+  .servicios-bg h3 {
+    font-size: 1.7rem;
+  }
+
+  .planes-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .plan-card {
+    padding: 20px;
+  }
+
+  .plan-card h4 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .servicios-bg h2 {
+    font-size: 1.7rem;
+  }
+
+  .servicios-bg h3 {
+    font-size: 1.5rem;
+  }
+
+  .plan-card {
+    padding: 15px;
+  }
+
+  .plan-card ul li {
+    font-size: 0.9rem;
+  }
+
+  .btn-plan {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== Sección Food CON IMAGEN DE FONDO ===== */
 .food-bg {
   position: relative;
   background: url('img/168185-perro-gran_dans-pastor_aleman-pastor_australiano-pastor_belga_malinois-3840x2160.jpg') no-repeat center center;
   background-size: cover;
+  background-attachment: fixed;
   padding: 100px 20px;
   overflow: hidden;
 }
@@ -244,42 +566,41 @@ body {
   position: absolute;
   top:0; left:0;
   width:100%; height:100%;
-  background-color: rgba(0,0,0,0.25); /* ligera sombra para texto */
+  background-color: rgba(0,0,0,0.25);
   z-index:1;
 }
 
 .food-bg .container {
   position: relative;
   z-index:2;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Título */
 .food-bg .section-title {
-  color: #ff9800;
+  color: var(--primary);
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 50px;
   font-weight: bold;
 }
 
-/* Grid de productos */
 .food-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
 }
 
-/* Tarjetas de productos */
 .food-grid .card {
-  background-color: rgba(0, 0, 0, 0.6); /* oscuro semi-transparente, como Servicios */
-  color: #fff; /* texto blanco para que contraste */
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
   border-radius: 15px;
   padding: 15px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   text-align: center;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: none;
 }
-
 
 .food-grid .card:hover {
   transform: translateY(-10px);
@@ -296,27 +617,31 @@ body {
 
 .food-grid .card-title {
   font-size: 1.4rem;
-  color: #ff9800;
+  color: var(--primary);
   margin-bottom: 8px;
 }
 
 .food-grid .descripcion {
   font-size: 1rem;
-  color: fffff;
+  color: #fff;
   margin-bottom: 10px;
   line-height: 1.4;
 }
 
 .food-grid .precio {
   font-weight: bold;
-  color: fffff;
+  color: #fff;
   margin-bottom: 10px;
+  font-size: 1.2rem;
 }
 
 .food-grid input.cantidad {
   width: 60px;
   margin-bottom: 10px;
   padding: 5px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
 }
 
 .food-grid button.agregar-carrito {
@@ -324,75 +649,136 @@ body {
   color: #fff;
   border: none;
   border-radius: 8px;
-  padding: 8px 12px;
+  padding: 10px 20px;
   cursor: pointer;
   transition: all 0.3s;
+  font-weight: bold;
 }
 
 .food-grid button.agregar-carrito:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 15px rgba(255, 152, 0, 0.5);
 }
 
-/* Carrito */
 #carrito {
-  max-width: 400px;
+  max-width: 500px;
   margin: 50px auto 0 auto;
-  padding: 15px;
+  padding: 20px;
   border-radius: 15px;
- background-color: rgba(255, 255, 255, 0.5); /* más transparente */
-
+  background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+#carrito h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
 }
 
 #lista-carrito {
   list-style: none;
   padding-left: 0;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 #lista-carrito li {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+  color: #333;
 }
 
 #lista-carrito li button {
-  background-color: red;
+  background-color: #e74c3c;
   color: #fff;
   border: none;
   border-radius: 4px;
-  padding: 2px 6px;
+  padding: 4px 8px;
   cursor: pointer;
+  font-size: 0.9rem;
+}
+
+#carrito p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
 }
 
 #finalizar {
   margin-top: 10px;
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   font-weight: bold;
   cursor: pointer;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s;
 }
 
-/* Responsive */
-@media (max-width:768px){
+#finalizar:hover {
+  background-color: #e68900;
+  transform: translateY(-2px);
+}
+
+/* Responsive Food */
+@media screen and (max-width: 768px) {
   .food-bg {
-    padding: 80px 15px;
+    padding: 60px 15px;
+    background-attachment: scroll;
   }
+
+  .food-bg .section-title {
+    font-size: 2rem;
+  }
+
+  .food-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
   .food-grid .card {
-    padding: 10px;
+    padding: 12px;
+  }
+
+  .food-grid .card img {
+    height: 150px;
+  }
+
+  #carrito {
+    max-width: 100%;
+    padding: 15px;
   }
 }
 
+@media screen and (max-width: 480px) {
+  .food-bg .section-title {
+    font-size: 1.7rem;
+  }
 
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
 
+  .food-grid .card-title {
+    font-size: 1.2rem;
+  }
 
-/* ===== Sección Contacto ===== */
-/* Fondo y overlay */
+  .food-grid .descripcion {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== Sección Contacto CON IMAGEN DE FONDO ===== */
 .contacto-bg {
   position: relative;
-  background: url('img/lassie_dog-wallpaper-1920x1080.jpg') no-repeat center center;
+  background: url('img/168185-perro-gran_dans-pastor_aleman-pastor_australiano-pastor_belga_malinois-3840x2160.jpg') no-repeat center center;
   background-size: cover;
+  background-attachment: fixed;
   padding: 100px 20px;
 }
 
@@ -410,9 +796,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Título */
 .form-title {
   font-size: 2.5rem;
   font-weight: bold;
@@ -421,7 +808,6 @@ body {
   margin-bottom: 30px;
 }
 
-/* Contact Content */
 .contact-content {
   display: flex;
   gap: 40px;
@@ -429,9 +815,8 @@ body {
   justify-content: center;
 }
 
-/* Formulario */
 .form-card {
-  background-color: rgba(255,255,255,0.78);
+  background-color: rgba(255,255,255,0.95);
   border-radius: 25px;
   max-width: 600px;
   width: 100%;
@@ -445,7 +830,7 @@ body {
 }
 
 .form-floating .form-control {
-  padding-left: 45px;
+  padding-left: 15px;
 }
 
 .form-floating label i {
@@ -461,28 +846,33 @@ body {
   padding: 12px;
   border:none;
   transition: all 0.4s;
+  width: 100%;
 }
 
 .btn-animated:hover {
-  background: var(--accent);
+  background: #e68900;
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(255,165,0,0.4);
 }
 
-/* Información rápida */
 .info-rapida {
   max-width: 400px;
   color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 15px;
 }
 
 .info-rapida h3 {
   color: var(--primary);
   margin-bottom: 15px;
+  font-size: 1.8rem;
 }
 
 .info-rapida p {
   font-size: 1rem;
   margin-bottom: 10px;
+  line-height: 1.6;
 }
 
 .info-rapida i {
@@ -511,7 +901,7 @@ body {
 .faq-question {
   width: 100%;
   text-align: left;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.7);
   color: #fff;
   border: none;
   padding: 12px 20px;
@@ -526,25 +916,25 @@ body {
 }
 
 .faq-question:hover {
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.85);
 }
 
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.5);
   padding: 0 20px;
   border-radius: 12px;
   transition: max-height 0.3s ease, padding 0.3s ease;
   margin-top: 5px;
+  color: #fff;
 }
 
 .faq-item.active .faq-answer {
-  max-height: 300px;
-  padding: 12px 20px;
+  max-height: 500px;
+  padding: 15px 20px;
 }
 
-/* Flecha que rota */
 .faq-arrow {
   transition: transform 0.3s;
 }
@@ -553,80 +943,202 @@ body {
   transform: rotate(180deg);
 }
 
-/* Responsive */
-@media (max-width: 768px){
+/* Responsive Contacto */
+@media screen and (max-width: 768px) {
+  .contacto-bg {
+    padding: 60px 15px;
+    background-attachment: scroll;
+  }
+
+  .form-title {
+    font-size: 2rem;
+  }
+
   .contact-content {
     flex-direction: column;
     align-items: center;
+    gap: 30px;
+  }
+
+  .form-card {
+    padding: 30px 20px;
+  }
+
+  .info-rapida {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .faq-section h3 {
+    font-size: 1.7rem;
+  }
+
+  .faq-question {
+    font-size: 1rem;
+    padding: 10px 15px;
   }
 }
 
-/* ===== Footer ===== */
+@media screen and (max-width: 480px) {
+  .contacto-bg {
+    padding: 40px 10px;
+  }
+
+  .form-title {
+    font-size: 1.7rem;
+  }
+
+  .form-card {
+    padding: 20px 15px;
+  }
+
+  .info-rapida h3 {
+    font-size: 1.5rem;
+  }
+
+  .info-rapida p {
+    font-size: 0.9rem;
+  }
+
+  .faq-question {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+}
+
+/* ===== Footer CON IMAGEN DE FONDO ===== */
 footer {
   font-family: Arial, sans-serif;
+  padding: 40px 20px 20px;
+  background: url('img/168185-perro-gran_dans-pastor_aleman-pastor_australiano-pastor_belga_malinois-3840x2160.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 0;
+}
+
+footer > * {
+  position: relative;
+  z-index: 1;
 }
 
 footer h4, footer h5 {
   color: var(--primary);
+  margin-bottom: 15px;
 }
 
 footer p, footer a {
   color: #fff;
   text-decoration: none;
+  line-height: 1.6;
 }
 
 footer a:hover {
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 footer hr {
-  border-top: 1px solid #fff;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 30px 0;
 }
 
-/* Redes Sociales */
 .social-icon {
   display: inline-flex;
   align-items: center;
   font-weight: 500;
   transition: transform 0.3s, color 0.3s;
+  margin-bottom: 10px;
 }
 
 .social-icon i {
   font-size: 1.2rem;
-  margin-right: 5px;
+  margin-right: 8px;
 }
 
 .social-icon:hover {
   transform: translateY(-3px);
-  color: var(--accent);
+  color: var(--primary);
 }
 
-/* Responsive iframe mapa */
 footer iframe {
   border-radius: 10px;
+  width: 100%;
 }
 
-/* Banner responsive */
-.banner {
-  width: 100%;
-  height: auto; /* Se adapta automáticamente en móvil */
-  max-height: 100vh; /* Nunca será más alto que la pantalla */
-  overflow: hidden;
+/* Responsive Footer */
+@media screen and (max-width: 768px) {
+  footer {
+    padding: 30px 15px 15px;
+    background-attachment: scroll;
+  }
+
+  footer h4, footer h5 {
+    font-size: 1.3rem;
+  }
+
+  footer p, footer a {
+    font-size: 0.95rem;
+  }
+
+  footer iframe {
+    height: 200px;
+  }
 }
 
-.banner img {
-  width: 100%;
+@media screen and (max-width: 480px) {
+  footer h4, footer h5 {
+    font-size: 1.2rem;
+  }
+
+  footer p, footer a {
+    font-size: 0.9rem;
+  }
+
+  .social-icon {
+    font-size: 0.9rem;
+  }
+
+  footer iframe {
+    height: 180px;
+  }
+}
+
+/* ===== Utilidades Generales ===== */
+img {
+  max-width: 100%;
   height: auto;
-  object-fit: cover; /* Cubre toda la sección sin deformarse */
+  display: block;
 }
 
-/* Ajuste especial para móviles */
-@media (max-width: 768px) {
-  .banner {
-    height: 50vh; /* La mitad de la pantalla en móviles */
-  }
-  .banner img {
-    object-position: center; /* Centra la parte visible */
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 80px;
+}
+
+@media screen and (max-width: 768px) {
+  section {
+    scroll-margin-top: 70px;
   }
 }
 
+/* ===== Fix para conflictos con Bootstrap ===== */
+.container {
+  max-width: 1200px;
+}
+
+.pt-5 {
+  padding-top: 0 !important;
+}
