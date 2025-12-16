@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SinucanTOUR</title>
 
+    <!-- Optimización para móviles -->
+    <meta name="theme-color" content="#ff9800">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Preconectar a CDNs -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
     <!-- ===== Bootstrap CSS ===== -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -23,11 +32,6 @@
       referrerpolicy="no-referrer"
     />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
     <!-- ===== Swiper CSS (Carrusel) ===== -->
     <link
       rel="stylesheet"
@@ -38,11 +42,6 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
-    />
-    <!-- Swiper CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
     />
 
     <!-- ===== Tu CSS personalizado ===== -->
@@ -78,7 +77,7 @@
                 <a class="nav-link" href="#nosotros">Nosotros</a>
               </li>
                <li class="nav-item">
-                <a class="nav-link" href="#🐾 Nuestras Mascotas 🐾">🐾 Nuestras Mascotas 🐾</a>
+                <a class="nav-link" href="#mascotas">🐾 Nuestras Mascotas 🐾</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#servicios">Servicios</a>
@@ -122,13 +121,14 @@
           </div>
         </div>
         <!-- Botones de navegación -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next" aria-label="Siguiente imagen"></div>
+        <div class="swiper-button-prev" aria-label="Imagen anterior"></div>
         <!-- Paginación -->
         <div class="swiper-pagination"></div>
       </div>
     </section>
     <br /><br />
+    
     <!-- ===== Sección Nosotros ===== -->
     <section id="nosotros">
       <div class="container">
@@ -179,7 +179,7 @@
               no se conforma con lo tradicional, sino que integra la ingeniería,
               la innovación y el amor por los animales para brindar un servicio
               único, adaptado a las necesidades de una nueva generación de
-              dueños de mascotas..
+              dueños de mascotas.
             </p>
           </div>
         </div>
@@ -230,695 +230,399 @@
       </div>
     </section>
 
-    <!--  seccion Mascota 1 -->
-      
+    <!-- ===== SECCIÓN MASCOTAS - UN SOLO CARRUSEL ===== -->
     <section id="mascotas" class="py-5 bg-light">
-      <section id="🐾 Nuestras Mascotas 🐾"></section>
       <div class="container">
-        <h2 class="text-center mb-5">🐾 Nuestras Mascotas 🐾</h2>
-        <div class="row g-4">
-          <div class="col-lg-4 col-md-6">
-            <div class="card shadow-sm">
-              <div
-                id="carouselMascota1"
-                class="carousel slide"
-                data-bs-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="img/fotos de los perros/ozymandias (1).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 1 - foto 1"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/ozymandias (3).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 1 - foto 2"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/os3.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 1 - foto 3"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/os4.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 1 - foto 4"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/os2.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 1 - foto 5"
-                    />
-                  </div>
-                </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselMascota1"
-                  data-bs-slide="prev"
-                >
-                  <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselMascota1"
-                  data-bs-slide="next"
-                >
-                  <span class="carousel-control-next-icon"></span>
-                </button>
-              </div>
-              <div class="card-body text-center">
-                <h5 class="card-title">Ozymandias</h5>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mascota 2 -->
-          <div class="col-lg-4 col-md-6">
-            <div class="card shadow-sm">
-              <div
-                id="carouselMascota2"
-                class="carousel slide"
-                data-bs-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="img/fotos de los perros/El niño Jack ♥️ (1).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 2 - foto 1"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/El niño Jack ♥️ (2).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 2 - foto 2"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/El niño Jack ♥️ (3).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 2 - foto 3"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/El niño Jack ♥️ (4).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 2 - foto 4"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/El niño Jack ♥️.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 2 - foto 5"
-                    />
-                  </div>
-                </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselMascota2"
-                  data-bs-slide="prev"
-                >
-                  <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselMascota2"
-                  data-bs-slide="next"
-                >
-                  <span class="carousel-control-next-icon"></span>
-                </button>
-              </div>
-              <div class="card-body text-center">
-                <h5 class="card-title">Jack</h5>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mascota 3 -->
-          <div class="col-lg-4 col-md-6">
-            <div class="card shadow-sm">
-              <div
-                id="carouselMascota3"
-                class="carousel slide"
-                data-bs-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="img/fotos de los perros/da1.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 3 - foto 1"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/da2.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 3 - foto 2"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/da3.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 3 - foto 3"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/da1.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 3 - foto 4"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/da2.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 3 - foto 5"
-                    />
-                  </div>
-                </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselMascota3"
-                  data-bs-slide="prev"
-                >
-                  <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselMascota3"
-                  data-bs-slide="next"
-                >
-                  <span class="carousel-control-next-icon"></span>
-                </button>
-              </div>
-              <div class="card-body text-center">
-                <h5 class="card-title">♥️</h5>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mascota 4 -->
-          <div class="col-lg-4 col-md-6">
-            <div class="card shadow-sm">
-              <div
-                id="carouselMascota4"
-                class="carousel slide"
-                data-bs-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="img/fotos de los perros/Thor ♥️ (1).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 4 - foto 1"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Thor ♥️ (2).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 4 - foto 2"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Thor ♥️.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 4 - foto 3"
-                    />
-                  </div>
-                 
-                </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselMascota4"
-                  data-bs-slide="prev"
-                >
-                  <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselMascota4"
-                  data-bs-slide="next"
-                >
-                  <span class="carousel-control-next-icon"></span>
-                </button>
-              </div>
-              <div class="card-body text-center">
-                <h5 class="card-title">Thor ♥️</h5>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mascota 5 -->
-          <div class="col-lg-4 col-md-6">
-            <div class="card shadow-sm">
-              <div
-                id="carouselMascota5"
-                class="carousel slide"
-                data-bs-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="img/fotos de los perros/Roma.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 5 - foto 1"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Roma (1).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 5 - foto 2"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Roma (2).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 5 - foto 3"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Roma (3).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 5 - foto 4"
-                    />
-                  </div>
-                  
-                </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselMascota5"
-                  data-bs-slide="prev"
-                >
-                  <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselMascota5"
-                  data-bs-slide="next"
-                >
-                  <span class="carousel-control-next-icon"></span>
-                </button>
-              </div>
-              <div class="card-body text-center">
-                <h5 class="card-title">Roma ♥️</h5>
-              </div>
-            </div>
-          </div>
-
-          <!-- ⬇️ Repite igual estructura hasta la Mascota 15 ⬇️ -->
-
-          <!-- Mascota 6 -->
-          <div class="col-lg-4 col-md-6">
-            <div class="card shadow-sm">
-              <div
-                id="carouselMascota6"
-                class="carousel slide"
-                data-bs-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="img/fotos de los perros/Bruno. ❤️.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 6 - foto 1"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Bruno. ❤️ (1).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 6 - foto 2"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Bruno. ❤️ (2).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 6 - foto 3"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Bruno. ❤️ (3).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 6 - foto 4"
-                    />
-                  </div>
-                 
-                </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselMascota6"
-                  data-bs-slide="prev"
-                >
-                  <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselMascota6"
-                  data-bs-slide="next"
-                >
-                  <span class="carousel-control-next-icon"></span>
-                </button>
-              </div>
-              <div class="card-body text-center">
-                <h5 class="card-title">Bruno♥️</h5>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mascota 7 -->
-          <div class="col-lg-4 col-md-6">
-            <div class="card shadow-sm">
-              <div
-                id="carouselMascota7"
-                class="carousel slide"
-                data-bs-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="img/fotos de los perros/482038942_17938049318993245_8304299380400514404_n..webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 7 - foto 1"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/leo.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 7 - foto 2"
-                    />
-                  </div>
-                  
-                </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselMascota7"
-                  data-bs-slide="prev"
-                >
-                  <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselMascota7"
-                  data-bs-slide="next"
-                >
-                  <span class="carousel-control-next-icon"></span>
-                </button>
-              </div>
-              <div class="card-body text-center">
-                <h5 class="card-title">Leo♥️</h5>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mascota 8 -->
-          <div class="col-lg-4 col-md-6">
-            <div class="card shadow-sm">
-              <div
-                id="carouselMascota8"
-                class="carousel slide"
-                data-bs-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="img/fotos de los perros/Apolo ❤️.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 8 - foto 1"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Apolo ❤️ (1).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 8 - foto 2"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Apolo ❤️ (2).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 8 - foto 3"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Apolo ❤️ (3).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 8 - foto 4"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Apolo ❤️ (4).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 8 - foto 5"
-                    />
-                  </div>
-                </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselMascota8"
-                  data-bs-slide="prev"
-                >
-                  <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselMascota8"
-                  data-bs-slide="next"
-                >
-                  <span class="carousel-control-next-icon"></span>
-                </button>
-              </div>
-              <div class="card-body text-center">
-                <h5 class="card-title">Apolo♥️</h5>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mascota 9 -->
-          <div class="col-lg-4 col-md-6">
-            <div class="card shadow-sm">
-              <div
-                id="carouselMascota9"
-                class="carousel slide"
-                data-bs-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="img/fotos de los perros/Tigre ❤️.webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 9 - foto 1"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Tigre ❤️ (1).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 9 - foto 2"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="img/fotos de los perros/Tigre ❤️ (2).webp"
-                      class="d-block w-100 img-square"
-                      alt="Mascota 9 - foto 3"
-                    />
-                  </div>
-                 
-                </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselMascota9"
-                  data-bs-slide="prev"
-                >
-                  <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselMascota9"
-                  data-bs-slide="next"
-                >
-                  <span class="carousel-control-next-icon"></span>
-                </button>
-              </div>
-              <div class="card-body text-center">
-                <h5 class="card-title">Tigre♥️</h5>
-              </div>
-            </div>
-          </div>
-           <!-- Mascota 10 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="card shadow-sm">
-          <div id="carouselMascota10" class="carousel slide" data-bs-ride="carousel">
+        <h2 class="text-center mb-5" data-aos="fade-down">🐾 Nuestras Mascotas 🐾</h2>
+        
+        <!-- UN SOLO CARRUSEL CON TODAS LAS FOTOS -->
+        <div class="mascotas-carousel-container" data-aos="fade-up">
+          <div id="carouselMascotas" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              <div class="carousel-item active"><img src="img/fotos de los perros/makena.jpg" class="d-block w-100 img-square" alt="Mascota 10 - foto 1"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/makena1.jpg" class="d-block w-100 img-square" alt="Mascota 10 - foto 2"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/makena2.jpg" class="d-block w-100 img-square" alt="Mascota 10 - foto 3"></div>
               
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMascota10" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselMascota10" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-          </div>
-          <div class="card-body text-center"><h5 class="card-title">Makena❤️</h5></div>
-        </div>
-      </div>
-    </div>
-    <!-- Mascota 11 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="card shadow-sm">
-          <div id="carouselMascota11" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active"><img src="img/fotos de los perros/donald.jpg" class="d-block w-100 img-square" alt="Mascota 11 - foto 1"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/donald2.jpg" class="d-block w-100 img-square" alt="Mascota 11 - foto 2"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/donald1.jpg" class="d-block w-100 img-square" alt="Mascota 11 - foto 3"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/donal4.jpg" class="d-block w-100 img-square" alt="Mascota 11 - foto 4"></div>
-             
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMascota11" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselMascota11" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-          </div>
-          <div class="card-body text-center"><h5 class="card-title">Donald❤️</h5></div>
-        </div>
-      </div>
+              <!-- OZYMANDIAS -->
+              <div class="carousel-item active">
+                <img src="img/fotos de los perros/ozymandias (1).webp" class="d-block w-100 img-carousel" alt="Ozymandias">
+                <div class="carousel-caption">
+                  <h5>Ozymandias</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/ozymandias (3).webp" class="d-block w-100 img-carousel" alt="Ozymandias">
+                <div class="carousel-caption">
+                  <h5>Ozymandias</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/os3.webp" class="d-block w-100 img-carousel" alt="Ozymandias">
+                <div class="carousel-caption">
+                  <h5>Ozymandias</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/os4.webp" class="d-block w-100 img-carousel" alt="Ozymandias">
+                <div class="carousel-caption">
+                  <h5>Ozymandias</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/os2.webp" class="d-block w-100 img-carousel" alt="Ozymandias">
+                <div class="carousel-caption">
+                  <h5>Ozymandias</h5>
+                </div>
+              </div>
 
-      <!-- Mascota 12 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="card shadow-sm">
-          <div id="carouselMascota12" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active"><img src="img/fotos de los perros/bl5.webp" class="d-block w-100 img-square" alt="Mascota 12 - foto 1"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/bl.webp" class="d-block w-100 img-square" alt="Mascota 12 - foto 2"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/bl1.webp" class="d-block w-100 img-square" alt="Mascota 12 - foto 3"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/bl2.webp" class="d-block w-100 img-square" alt="Mascota 12 - foto 4"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/bl4.webp" class="d-block w-100 img-square" alt="Mascota 12 - foto 5"></div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMascota12" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselMascota12" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-          </div>
-          <div class="card-body text-center"><h5 class="card-title">Blue❤️</h5></div>
-        </div>
-      </div>
+              <!-- JACK -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/El niño Jack ♥️ (1).webp" class="d-block w-100 img-carousel" alt="Jack">
+                <div class="carousel-caption">
+                  <h5>Jack ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/El niño Jack ♥️ (2).webp" class="d-block w-100 img-carousel" alt="Jack">
+                <div class="carousel-caption">
+                  <h5>Jack ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/El niño Jack ♥️ (3).webp" class="d-block w-100 img-carousel" alt="Jack">
+                <div class="carousel-caption">
+                  <h5>Jack ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/El niño Jack ♥️ (4).webp" class="d-block w-100 img-carousel" alt="Jack">
+                <div class="carousel-caption">
+                  <h5>Jack ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/El niño Jack ♥️.webp" class="d-block w-100 img-carousel" alt="Jack">
+                <div class="carousel-caption">
+                  <h5>Jack ♥️</h5>
+                </div>
+              </div>
 
-      <!-- Mascota 13 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="card shadow-sm">
-          <div id="carouselMascota13" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active"><img src="img/fotos de los perros/crispeta.webp" class="d-block w-100 img-square" alt="Mascota 13 - foto 1"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/crispeta.webp" class="d-block w-100 img-square" alt="Mascota 13 - foto 2"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/crispeta.webp" class="d-block w-100 img-square" alt="Mascota 13 - foto 3"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/crispeta.webp" class="d-block w-100 img-square" alt="Mascota 13 - foto 4"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/crispeta.webp" class="d-block w-100 img-square" alt="Mascota 13 - foto 5"></div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMascota13" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselMascota13" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-          </div>
-          <div class="card-body text-center"><h5 class="card-title">Crispeta❤️</h5></div>
-        </div>
-      </div>
+              <!-- MASCOTA ♥️ -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/da1.webp" class="d-block w-100 img-carousel" alt="♥️">
+                <div class="carousel-caption">
+                  <h5>♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/da2.webp" class="d-block w-100 img-carousel" alt="♥️">
+                <div class="carousel-caption">
+                  <h5>♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/da3.webp" class="d-block w-100 img-carousel" alt="♥️">
+                <div class="carousel-caption">
+                  <h5>♥️</h5>
+                </div>
+              </div>
 
-      <!-- Mascota 14 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="card shadow-sm">
-          <div id="carouselMascota14" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active"><img src="img/fotos de los perros/lu.jpg" class="d-block w-100 img-square" alt="Mascota 14 - foto 1"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/lu1.jpg" class="d-block w-100 img-square" alt="Mascota 14 - foto 2"></div>
-              <div class="carousel-item"><img src="img/fotos de los perros/lu2.jpg" class="d-block w-100 img-square" alt="Mascota 14 - foto 3"></div>
-              
+              <!-- THOR -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Thor ♥️ (1).webp" class="d-block w-100 img-carousel" alt="Thor">
+                <div class="carousel-caption">
+                  <h5>Thor ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Thor ♥️ (2).webp" class="d-block w-100 img-carousel" alt="Thor">
+                <div class="carousel-caption">
+                  <h5>Thor ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Thor ♥️.webp" class="d-block w-100 img-carousel" alt="Thor">
+                <div class="carousel-caption">
+                  <h5>Thor ♥️</h5>
+                </div>
+              </div>
+
+              <!-- ROMA -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Roma.webp" class="d-block w-100 img-carousel" alt="Roma">
+                <div class="carousel-caption">
+                  <h5>Roma ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Roma (1).webp" class="d-block w-100 img-carousel" alt="Roma">
+                <div class="carousel-caption">
+                  <h5>Roma ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Roma (2).webp" class="d-block w-100 img-carousel" alt="Roma">
+                <div class="carousel-caption">
+                  <h5>Roma ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Roma (3).webp" class="d-block w-100 img-carousel" alt="Roma">
+                <div class="carousel-caption">
+                  <h5>Roma ♥️</h5>
+                </div>
+              </div>
+
+              <!-- BRUNO -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Bruno. ❤️.webp" class="d-block w-100 img-carousel" alt="Bruno">
+                <div class="carousel-caption">
+                  <h5>Bruno ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Bruno. ❤️ (1).webp" class="d-block w-100 img-carousel" alt="Bruno">
+                <div class="carousel-caption">
+                  <h5>Bruno ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Bruno. ❤️ (2).webp" class="d-block w-100 img-carousel" alt="Bruno">
+                <div class="carousel-caption">
+                  <h5>Bruno ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Bruno. ❤️ (3).webp" class="d-block w-100 img-carousel" alt="Bruno">
+                <div class="carousel-caption">
+                  <h5>Bruno ♥️</h5>
+                </div>
+              </div>
+
+              <!-- LEO -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/482038942_17938049318993245_8304299380400514404_n..webp" class="d-block w-100 img-carousel" alt="Leo">
+                <div class="carousel-caption">
+                  <h5>Leo ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/leo.webp" class="d-block w-100 img-carousel" alt="Leo">
+                <div class="carousel-caption">
+                  <h5>Leo ♥️</h5>
+                </div>
+              </div>
+
+              <!-- APOLO -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Apolo ❤️.webp" class="d-block w-100 img-carousel" alt="Apolo">
+                <div class="carousel-caption">
+                  <h5>Apolo ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Apolo ❤️ (1).webp" class="d-block w-100 img-carousel" alt="Apolo">
+                <div class="carousel-caption">
+                  <h5>Apolo ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Apolo ❤️ (2).webp" class="d-block w-100 img-carousel" alt="Apolo">
+                <div class="carousel-caption">
+                  <h5>Apolo ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Apolo ❤️ (3).webp" class="d-block w-100 img-carousel" alt="Apolo">
+                <div class="carousel-caption">
+                  <h5>Apolo ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Apolo ❤️ (4).webp" class="d-block w-100 img-carousel" alt="Apolo">
+                <div class="carousel-caption">
+                  <h5>Apolo ♥️</h5>
+                </div>
+              </div>
+
+              <!-- TIGRE -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Tigre ❤️.webp" class="d-block w-100 img-carousel" alt="Tigre">
+                <div class="carousel-caption">
+                  <h5>Tigre ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Tigre ❤️ (1).webp" class="d-block w-100 img-carousel" alt="Tigre">
+                <div class="carousel-caption">
+                  <h5>Tigre ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/Tigre ❤️ (2).webp" class="d-block w-100 img-carousel" alt="Tigre">
+                <div class="carousel-caption">
+                  <h5>Tigre ♥️</h5>
+                </div>
+              </div>
+
+              <!-- MAKENA -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/makena.jpg" class="d-block w-100 img-carousel" alt="Makena">
+                <div class="carousel-caption">
+                  <h5>Makena ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/makena1.jpg" class="d-block w-100 img-carousel" alt="Makena">
+                <div class="carousel-caption">
+                  <h5>Makena ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/makena2.jpg" class="d-block w-100 img-carousel" alt="Makena">
+                <div class="carousel-caption">
+                  <h5>Makena ♥️</h5>
+                </div>
+              </div>
+
+              <!-- DONALD -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/donald.jpg" class="d-block w-100 img-carousel" alt="Donald">
+                <div class="carousel-caption">
+                  <h5>Donald ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/donald2.jpg" class="d-block w-100 img-carousel" alt="Donald">
+                <div class="carousel-caption">
+                  <h5>Donald ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/donald1.jpg" class="d-block w-100 img-carousel" alt="Donald">
+                <div class="carousel-caption">
+                  <h5>Donald ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/donal4.jpg" class="d-block w-100 img-carousel" alt="Donald">
+                <div class="carousel-caption">
+                  <h5>Donald ♥️</h5>
+                </div>
+              </div>
+
+              <!-- BLUE -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/bl5.webp" class="d-block w-100 img-carousel" alt="Blue">
+                <div class="carousel-caption">
+                  <h5>Blue ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/bl.webp" class="d-block w-100 img-carousel" alt="Blue">
+                <div class="carousel-caption">
+                  <h5>Blue ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/bl1.webp" class="d-block w-100 img-carousel" alt="Blue">
+                <div class="carousel-caption">
+                  <h5>Blue ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/bl2.webp" class="d-block w-100 img-carousel" alt="Blue">
+                <div class="carousel-caption">
+                  <h5>Blue ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/bl4.webp" class="d-block w-100 img-carousel" alt="Blue">
+                <div class="carousel-caption">
+                  <h5>Blue ♥️</h5>
+                </div>
+              </div>
+
+              <!-- CRISPETA -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/crispeta.webp" class="d-block w-100 img-carousel" alt="Crispeta">
+                <div class="carousel-caption">
+                  <h5>Crispeta ♥️</h5>
+                </div>
+              </div>
+
+              <!-- LUPE -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/lu.jpg" class="d-block w-100 img-carousel" alt="Lupe">
+                <div class="carousel-caption">
+                  <h5>Lupe ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/lu1.jpg" class="d-block w-100 img-carousel" alt="Lupe">
+                <div class="carousel-caption">
+                  <h5>Lupe ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/lu2.jpg" class="d-block w-100 img-carousel" alt="Lupe">
+                <div class="carousel-caption">
+                  <h5>Lupe ♥️</h5>
+                </div>
+              </div>
+
+              <!-- JACOB -->
+              <div class="carousel-item">
+                <img src="img/fotos de los perros/jacob.jpg" class="d-block w-100 img-carousel" alt="Jacob">
+                <div class="carousel-caption">
+                  <h5>Jacob ♥️</h5>
+                </div>
+              </div>
+
+              <!-- KIARA -->
+              <div class="carousel-item">
+                <img src="img/kiara.webp" class="d-block w-100 img-carousel" alt="Kiara">
+                <div class="carousel-caption">
+                  <h5>Kiara ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/kiara1.webp" class="d-block w-100 img-carousel" alt="Kiara">
+                <div class="carousel-caption">
+                  <h5>Kiara ♥️</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/kiara2.webp" class="d-block w-100 img-carousel" alt="Kiara">
+                <div class="carousel-caption">
+                  <h5>Kiara ♥️</h5>
+                </div>
+              </div>
+
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMascota14" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselMascota14" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+            
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMascotas" data-bs-slide="prev" aria-label="Foto anterior">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselMascotas" data-bs-slide="next" aria-label="Foto siguiente">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+            
+            <!-- Indicadores -->
+            <div class="carousel-indicators-custom">
+              <span class="indicator-text">Desliza para ver más mascotas →</span>
+            </div>
           </div>
-          <div class="card-body text-center"><h5 class="card-title">Lupe❤️</h5></div>
         </div>
       </div>
- <!-- Mascota 15 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="card shadow-sm">
-          <div id="carouselMascota14" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active"><img src="img/fotos de los perros/jacob.jpg" class="d-block w-100 img-square" alt="Mascota 14 - foto 1"></div>
-              
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMascota14" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselMascota14" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-          </div>
-          <div class="card-body text-center"><h5 class="card-title">Jacob❤️</h5></div>
-        </div>
-      </div>
-      <!-- Mascota 16 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="card shadow-sm">
-          <div id="carouselMascota14" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active"><img src="img/kiara.webp" class="d-block w-100 img-square" alt="Mascota 14 - foto 1"></div>
-              <div class="carousel-item active"><img src="img/kiara1.webp" class="d-block w-100 img-square" alt="Mascota 14 - foto 1"></div>
-              <div class="carousel-item active"><img src="img/kiara2.webp" class="d-block w-100 img-square" alt="Mascota 14 - foto 1"></div>
-              
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMascota14" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselMascota14" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-          </div>
-          <div class="card-body text-center"><h5 class="card-title">kiara❤️</h5></div>
-        </div>
-      </div>
-  </div>
-</section>
-    
+    </section>
 
     <!-- =========================
-     SECCIÓN SERVICIOS (completa)
+     SECCIÓN SERVICIOS
 ========================= -->
     <section id="servicios" class="servicios-bg">
       <div class="container">
         <h2 data-aos="fade-down">Nuestros Planes</h2>
 
-        <!-- ======= PASEOS (primero) ======= -->
+        <!-- ======= PASEOS ======= -->
         <div class="planes-paseos">
           <h3 data-aos="fade-right" data-aos-duration="1000">Paseos</h3>
           <div class="planes-grid">
@@ -938,12 +642,12 @@
                   <strong>Duraciones disponibles:</strong>
                   <ul>
                     <li>
-                      30 min — Ideal para perros pequeños o que se cansan
+                      30 min – Ideal para perros pequeños o que se cansan
                       rápido.
                     </li>
-                    <li>45 min — Buena opción para perros medianos.</li>
+                    <li>45 min – Buena opción para perros medianos.</li>
                     <li>
-                      1 hora — Recomendado para perros grandes o con más
+                      1 hora – Recomendado para perros grandes o con más
                       energía.
                     </li>
                   </ul>
@@ -952,11 +656,11 @@
                   <strong>Frecuencia:</strong>
                   <ul>
                     <li>
-                      <b>1 paseo diario</b> — suficiente si tu perro tiene
+                      <b>1 paseo diario</b> – suficiente si tu perro tiene
                       actividad moderada dentro de casa.
                     </li>
                     <li>
-                      <b>2 paseos diarios</b> — ideal si quieres que tu perro
+                      <b>2 paseos diarios</b> – ideal si quieres que tu perro
                       salga dos veces para liberar energía, reducir ansiedad y
                       no aburrirse.
                     </li>
@@ -983,13 +687,13 @@
                 <li>
                   <strong>Duraciones disponibles:</strong>
                   <ul>
-                    <li>30 min — Adecuado para perros pequeños activos.</li>
+                    <li>30 min – Adecuado para perros pequeños activos.</li>
                     <li>
-                      45 min — Perfecto para perros medianos con energía
+                      45 min – Perfecto para perros medianos con energía
                       moderada.
                     </li>
                     <li>
-                      1 hora — Ideal para perros grandes que necesitan gastar
+                      1 hora – Ideal para perros grandes que necesitan gastar
                       más energía.
                     </li>
                   </ul>
@@ -998,11 +702,11 @@
                   <strong>Frecuencia:</strong>
                   <ul>
                     <li>
-                      <b>1 paseo diario</b> — mantiene una rutina estable y
+                      <b>1 paseo diario</b> – mantiene una rutina estable y
                       saludable.
                     </li>
                     <li>
-                      <b>2 paseos diarios</b> — recomendado para perros que
+                      <b>2 paseos diarios</b> – recomendado para perros que
                       requieren más ejercicio o pasan largas horas solos.
                     </li>
                   </ul>
@@ -1032,12 +736,12 @@
                   <strong>Duraciones disponibles:</strong>
                   <ul>
                     <li>
-                      30 min — Recomendado para perros pequeños que disfrutan
+                      30 min – Recomendado para perros pequeños que disfrutan
                       premios.
                     </li>
-                    <li>45 min — Excelente para perros medianos.</li>
+                    <li>45 min – Excelente para perros medianos.</li>
                     <li>
-                      1 hora — Perfecto para perros grandes y con mucha energía.
+                      1 hora – Perfecto para perros grandes y con mucha energía.
                     </li>
                   </ul>
                 </li>
@@ -1045,11 +749,11 @@
                   <strong>Frecuencia:</strong>
                   <ul>
                     <li>
-                      <b>1 paseo diario</b> — buena opción para mantener
+                      <b>1 paseo diario</b> – buena opción para mantener
                       actividad y entretenimiento.
                     </li>
                     <li>
-                      <b>2 paseos diarios</b> — ideal para perros muy activos,
+                      <b>2 paseos diarios</b> – ideal para perros muy activos,
                       razas grandes o para quienes quieren que el perro salga
                       dos veces al día.
                     </li>
@@ -1069,7 +773,7 @@
           </div>
         </div>
 
-        <!-- ======= BAÑOS (segundo) ======= -->
+        <!-- ======= BAÑOS ======= -->
         <div class="planes-banos">
           <h3 data-aos="fade-left" data-aos-duration="1000">Baños</h3>
           <div class="planes-grid">
@@ -1136,7 +840,7 @@
           </div>
         </div>
 
-        <!-- ======= GUARDERÍA (último) ======= -->
+        <!-- ======= GUARDERÍA ======= -->
         <div
           class="planes-guarderia"
           data-aos="fade-up"
@@ -1215,9 +919,8 @@
               Agregar
             </button>
           </div>
-
-          <!-- Agrega más productos aquí siguiendo la misma estructura -->
         </div>
+        
         <!-- Carrito -->
         <div id="carrito">
           <h3>Carrito</h3>
@@ -1229,7 +932,6 @@
     </section>
 
     <!-- ================= Sección Contacto ================= -->
-    <!-- ===== Sección Contacto ===== -->
     <section id="contacto" class="contacto-bg">
       <div class="overlay"></div>
       <div class="container">
@@ -1239,8 +941,6 @@
         <div class="contact-content" data-aos="fade-up">
           <!-- Formulario -->
           <div class="form-card">
-            <input type="hidden" name="_next" value="gracias.html" />
-
             <form
               id="contactForm"
               action="https://formsubmit.co/sinucan19@gmail.com"
@@ -1310,15 +1010,15 @@
                 Enviar mensaje
               </button>
 
-              <!-- === Configuración de FormSubmit === -->
+              <!-- Configuración de FormSubmit -->
               <input type="hidden" name="_next" value="https://sinucantour.github.io/beta1/gracias.html">
-
               <input type="hidden" name="_captcha" value="false" />
               <input
                 type="hidden"
                 name="_subject"
                 value="Nuevo mensaje desde SinucanTOUR"
               />
+              <input type="hidden" name="_template" value="table">
             </form>
           </div>
 
@@ -1332,7 +1032,7 @@
             <p><i class="fab fa-whatsapp"></i> WhatsApp: +57 3235882174</p>
             <p>
               <i class="fab fa-facebook"></i>
-              <i  class="fab fa-instagram" > </i>
+              <i class="fab fa-instagram"></i>
               <i class="fab fa-tiktok"></i> Síguenos en redes
             </p>
           </div>
@@ -1414,6 +1114,7 @@
 
     <br /><br /><br /><br />
 
+    <!-- ================= Footer ================= -->
     <footer class="bg-dark text-white pt-5 pb-3">
       <div class="container">
         <div class="row g-4">
@@ -1434,18 +1135,16 @@
           <!-- Redes Sociales -->
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
             <h5>Síguenos</h5>
-            <a href="#" class="social-icon me-3"
+            <a href="#" class="social-icon me-3" target="_blank" rel="noopener noreferrer"
               ><i class="bi bi-facebook"></i> Facebook</a
             >
-            <a href="https://www.instagram.com/sinucantour?igsh=d21yZXg4ZmNwN2Nh" class="social-icon me-3"
+            <a href="https://www.instagram.com/sinucantour?igsh=d21yZXg4ZmNwN2Nh" class="social-icon me-3" target="_blank" rel="noopener noreferrer"
               ><i class="bi bi-instagram"></i> Instagram</a
             >
             <a href="https://wa.me/573235882174?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20SinucanTOUR" 
-   target="_blank" rel="noopener noreferrer" class="social-icon">
-  <i class="bi bi-whatsapp"></i> WhatsApp
-</a>
-
-            
+               target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="bi bi-whatsapp"></i> WhatsApp
+            </a>
           </div>
         </div>
 
@@ -1483,37 +1182,5 @@
 
     <!-- ===== Tu JS personalizado ===== -->
     <script src="sinucan.js"></script>
-
-    <script>
-      // Inicializar Swiper
-      const swiper = new Swiper(".mySwiper", {
-        loop: true,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-      });
-
-      // Inicializar AOS
-      AOS.init();
-
-      // 🔹 Cerrar menú al hacer clic en un enlace
-      document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
-        link.addEventListener("click", () => {
-          const navbarCollapse = document.querySelector(".navbar-collapse");
-          if (navbarCollapse.classList.contains("show")) {
-            new bootstrap.Collapse(navbarCollapse).hide();
-          }
-        });
-      });
-    </script>
   </body>
 </html>
